@@ -1,4 +1,58 @@
-<html>
-
-  <h1>Test Page!!!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolving Globe SVG</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        svg {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <svg viewBox="0 0 100 100">
+        <defs>
+            <!-- Define a simple radial gradient for the globe -->
+            <radialGradient id="globeGradient" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color: #3498db; stop-opacity: 1" />
+                <stop offset="100%" style="stop-color: #2980b9; stop-opacity: 1" />
+            </radialGradient>
+        </defs>
+        <!-- Draw the globe -->
+        <circle cx="50" cy="50" r="40" fill="url(#globeGradient)" />
+        <!-- Draw the longitude lines -->
+        <g stroke="#ffffff" stroke-width="0.5">
+            <circle cx="50" cy="50" r="40" fill="none" />
+            <circle cx="50" cy="50" r="30" fill="none" />
+            <circle cx="50" cy="50" r="20" fill="none" />
+            <circle cx="50" cy="50" r="10" fill="none" />
+        </g>
+        <!-- Draw the latitude lines -->
+        <g stroke="#ffffff" stroke-width="0.5">
+            <line x1="50" y1="10" x2="50" y2="90" />
+            <line x1="10" y1="50" x2="90" y2="50" />
+            <line x1="20" y1="14.64" x2="80" y2="85.36" />
+            <line x1="80" y1="14.64" x2="20" y2="85.36" />
+        </g>
+        <!-- Create the revolving animation -->
+        <animateTransform
+            attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            from="0 50 50"
+            to="360 50 50"
+            dur="10s"
+            repeatCount="indefinite" />
+    </svg>
+</body>
 </html>
